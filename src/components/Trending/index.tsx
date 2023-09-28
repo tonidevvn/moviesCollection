@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { moviesDb } from "../../services";
 import Loading from "../Loading";
-import { TrendingItem } from "../../models/Movies";
+import { MovieItem } from "../../models/Movies";
 import MovieCard from "./MovieCard";
 
 function Trending() {
   const TOP_TREND_NO = 8;
   const TOP_TREND_MAX = 20;
-  const [topTrends, setTopTrends] = useState<TrendingItem[]>([]);
+  const [topTrends, setTopTrends] = useState<MovieItem[]>([]);
   const [topTrendsNo, setTopTrendsNo] = useState<number>(TOP_TREND_NO);
   const [isloading, setIsLoading] = useState<boolean>(false);
 
@@ -52,7 +52,7 @@ function Trending() {
       <div className="flex justify-center">
         <button
           type="button"
-          className="btn hover:transform duration-300 hover:text-2xl"
+          className="btn shadow shadow-gray-400 hover:transform duration-300 hover:text-2xl"
           onClick={() => loadingMoreProcessing()}
         >
           Load more

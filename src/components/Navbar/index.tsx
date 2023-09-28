@@ -1,4 +1,6 @@
+import { useState } from "react";
 import NavItem from "./NavItem";
+import { NavLink } from "react-router-dom";
 
 const menuItems = [
   {
@@ -92,23 +94,54 @@ const menuItems = [
 ];
 
 function Navbar() {
+  const [mobileMenuToogle, setMobileMenuToogle] = useState<boolean>(false);
+
   return (
     <nav className="col-span-1 bg-cyan-200">
-      <div className="flex flex-col mx-4 justify-center align-middle">
-        <div className="flex m-2 justify-between">
-          <img src="/vite.svg" alt="App logo" />
-          <h4 className="uppercase text-primary border-b border-primary">
-            Movies with Toni
-          </h4>
+      <div className="flex flex-col mx-4 justify-center align-middle relative">
+        <div className="flex m-2 justify-start md:justify-between">
+          <img src="/vite.svg" alt="App logo" className="mr-2 cursor-pointer" />
+          <NavLink to="/">
+            <h4 className="uppercase text-primary border-b border-primary text-center">
+              Movies with Toni
+            </h4>
+          </NavLink>
         </div>
 
-        <ul className="my-2">
+        <div className="absolute top-2 right-0 -translate-x-2 visible md:hidden">
+          <a href="#" onClick={() => setMobileMenuToogle((prev) => !prev)}>
+            {mobileMenuToogle ? (
+              <div className="group flex w-8 h-8 cursor-pointer items-center justify-center p-2">
+                <div className="space-y-2">
+                  <span className="block h-1 w-8 origin-center rounded-full bg-primary opacity-80 transition-transform ease-in-out translate-y-1.5 rotate-45"></span>
+                  <span className="block h-1 w-8 origin-center rounded-full bg-orange-500 transition-transform ease-in-out -translate-y-1.5 -rotate-45"></span>
+                </div>
+              </div>
+            ) : (
+              <div className="group flex w-8 h-8 cursor-pointer items-center justify-center p-2">
+                <div className="space-y-2">
+                  <span className="block h-1 w-8 origin-center rounded-full bg-primary opacity-80 transition-transform ease-in-out"></span>
+                  <span className="block h-1 w-6 origin-center rounded-full bg-orange-500 transition-transform ease-in-out"></span>
+                </div>
+              </div>
+            )}
+          </a>
+        </div>
+
+        <ul
+          className={`my-2 transition-all duration-500 ease-in-out overflow-hidden md:max-h-max ${
+            mobileMenuToogle ? "max-h-screen" : "max-h-0"
+          }`}
+        >
           {menuItems.map((menuItem, index) => (
             <li
               key={index}
-              className="hover:bg-primary hover:text-white hover:rounded-sm"
+              className="hover:bg-primary hover:text-white hover:rounded"
             >
-              <NavItem item={menuItem}></NavItem>
+              <NavItem
+                item={menuItem}
+                onClick={() => setMobileMenuToogle(false)}
+              ></NavItem>
             </li>
           ))}
         </ul>

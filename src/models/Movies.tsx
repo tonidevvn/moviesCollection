@@ -1,4 +1,4 @@
-export interface TrendingItem {
+export interface MovieItem {
   adult: boolean;
   backdrop_path: string;
   id: number;

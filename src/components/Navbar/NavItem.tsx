@@ -6,10 +6,16 @@ export interface Item {
   to: string;
 }
 
-function NavItem({ item }: { item: Item }) {
+function NavItem({
+  item,
+  onClick,
+}: {
+  item: Item;
+  onClick: React.MouseEventHandler;
+}) {
   const { label, to, icon } = item;
   return (
-    <NavLink to={to} className="flex justify-end m-2 py-2">
+    <NavLink to={to} className="flex justify-end m-2 py-2" onClick={onClick}>
       <span className="mr-2 font-semibold">{label}</span>
       {icon}
     </NavLink>
