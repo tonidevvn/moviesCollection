@@ -1,25 +1,46 @@
 import { useEffect, useState } from "react";
-import { moviesDb } from "../../services";
-import Loading from "../Loading";
-import { MovieItem } from "../../models/Movies";
+import Loading from "../../components/Loading";
+import { MovieItem } from "./Movie";
 import MovieCard from "./MovieCard";
 
-function Trending() {
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { fetchTrendingMoviesAsync, movieSelector } from "./movieSlice";
+
+function TopTrending() {
   const TOP_TREND_NO = 8;
   const TOP_TREND_MAX = 20;
+  const movieData = useAppSelector(movieSelector);
+  const dispatch = useAppDispatch();
   const [topTrends, setTopTrends] = useState<MovieItem[]>([]);
   const [topTrendsNo, setTopTrendsNo] = useState<number>(TOP_TREND_NO);
   const [isloading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     async function fetchData() {
-      const results = await moviesDb();
-      setTopTrends(results);
-      console.log("🚀 ~ file: index.tsx:28 ~ fetchData ~ results:", results);
+      console.log(">>> fetching data ...");
+      console.log(
+        "🚀 ~ file: TopTrending.tsx:29 ~ useEffect ~ movieData:",
+        movieData
+      );
+      dispatch(fetchTrendingMoviesAsync());
     }
 
-    fetchData();
+    console.log(
+      "🚀 ~ file: TopTrending.tsx:30 ~ useEffect ~ movieData.movies:",
+      movieData.movies
+    );
+    // check if already fetching api before
+    if (movieData.movies?.length) {
+      setTopTrends(movieData.movies);
+    } else {
+      // first call and need to fetch api
+      fetchData();
+    }
   }, []);
+
+  useEffect(() => {
+    setTopTrends(movieData.movies);
+  }, [movieData]);
 
   const loadingMoreProcessing = () => {
     setIsLoading(true);
@@ -62,4 +83,4 @@ function Trending() {
   );
 }
 
-export default Trending;
+export default TopTrending;

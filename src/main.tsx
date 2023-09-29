@@ -6,6 +6,8 @@ import TVShows from "./pages/TVShows/index.tsx";
 import About from "./pages/About/index.tsx";
 import "./index.css";
 import Home from "./pages/Home/index.tsx";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
 
 const router = createBrowserRouter([
   {
@@ -33,5 +35,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <RouterProvider router={router} />
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
 );

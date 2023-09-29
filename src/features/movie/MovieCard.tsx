@@ -1,4 +1,4 @@
-import { MovieItem } from "../../models/Movies";
+import { MovieItem } from "./Movie";
 
 function MovieCard({ cardItem }: { cardItem: MovieItem }) {
   const { backdrop_path, title, release_date, vote_average } = cardItem;

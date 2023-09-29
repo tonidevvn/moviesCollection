@@ -15,3 +15,15 @@ export interface MovieItem {
   vote_average: number;
   vote_count: number;
 }
+
+export interface MoviesState {
+  movies: MovieItem[];
+  movies_popular: MovieItem[];
+  loading: boolean;
+  error: string | undefined;
+}
+
+export enum MovieLoadingTypes {
+  Trend = 1,
+  Popular,
+}
