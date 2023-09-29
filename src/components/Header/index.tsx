@@ -1,4 +1,13 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 function Header() {
+  const [query, setQuery] = useState<string>();
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    navigate(`/search?query=${query}`);
+  };
   return (
     <>
       <h1>Welcome.</h1>
@@ -8,8 +17,13 @@ function Header() {
         <input
           placeholder="Search for a movie, tv show..."
           className="flex-1 p-2 text-lg focus:outline-none"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
         ></input>
-        <button className="rounded-full bg-primary opacity-80 text-white text-2xl font-semibold px-6 hover:opacity-100 transition-all ease-in-out duration-300">
+        <button
+          className="rounded-full bg-primary opacity-80 text-white text-2xl font-semibold px-6 hover:opacity-100 transition-all ease-in-out duration-300"
+          onClick={handleSearch}
+        >
           Search
         </button>
       </div>

@@ -8,6 +8,7 @@ import "./index.css";
 import Home from "./pages/Home/index.tsx";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
+import Search from "./pages/Search/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/search",
+        element: <Search />,
       },
       {
         path: "/",
