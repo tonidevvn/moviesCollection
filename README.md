@@ -1,11 +1,17 @@
 # Favorite movies collection web app
 
-Favorite movies collection web app, created with React + TypeScript + Vite
+A favorite movies collection web app, created with React + TypeScript + Vite
 Using template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+This application is using api of themoviedb in development or in prototype testing, so before using it you have to create an api from themoviedb and generate an API and apply it to this application, follow the below step to connect api with this app.
+
+First go to https://www.themoviedb.org/documentation/api, and follow the API Documentation, you will get the API Code.
 
 ### [Demo page](https://toni-movies-collection.vercel.app/)
 
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+
+Hi, do you like movies? 😁 Try MoviesApp here
 
 <pre>
 <code>https://toni-movies-collection.vercel.app/</code>
