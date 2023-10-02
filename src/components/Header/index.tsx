@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Header() {
-  const [query, setQuery] = useState<string>();
+  const [query, setQuery] = useState<string>("");
   const navigate = useNavigate();
 
   const handleSearch = () => {
+    setQuery("");
     navigate(`/search?query=${query}`);
   };
   return (

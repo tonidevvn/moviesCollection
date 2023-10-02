@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import Loading from "../../components/Loading";
-import { MovieItem } from "./Movie";
+import { MovieItem } from "./interface";
 import MovieCard from "./MovieCard";
 
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { fetchPopularMoviesAsync, movieSelector } from "./movieSlice";
 
 function TopPopular() {
-  const TOP_POPULAR_NO = 4;
-  const TOP_POPULAR_MAX = 8;
+  const TOP_POPULAR_NO = 8;
+  const TOP_POPULAR_MAX = 12;
   const movieData = useAppSelector(movieSelector);
   const dispatch = useAppDispatch();
   const [topPopulars, setTopPopulars] = useState<MovieItem[]>([]);

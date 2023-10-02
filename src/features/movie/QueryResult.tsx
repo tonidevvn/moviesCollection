@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Loading from "../../components/Loading";
-import { MovieItem } from "./Movie";
+import { MovieItem } from "./interface";
 import { fetchMovieQuery } from "./movieAPI";
 import QueryCard from "./QueryCard";
 

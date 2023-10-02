@@ -1,7 +1,7 @@
 import { fetchMovies } from "./movieAPI";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
-import { MoviesState, MovieLoadingTypes, MovieItem } from "./Movie";
+import { MoviesState, MovieLoadingTypes, MovieItem } from "./interface";
 
 const initialState: MoviesState = {
   loading: false,

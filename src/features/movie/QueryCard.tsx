@@ -1,4 +1,4 @@
-import { MovieItem } from "./Movie";
+import { MovieItem } from "./interface";
 
 function QueryCard({ cardItem }: { cardItem: MovieItem }) {
   const { backdrop_path, title, release_date, overview } = cardItem;

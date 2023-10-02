@@ -9,12 +9,17 @@ import Home from "./pages/Home/index.tsx";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
 import Search from "./pages/Search/index.tsx";
+import Details from "./pages/Movies/Details.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
+      {
+        path: "/movie/:id",
+        element: <Details />,
+      },
       {
         path: "/movies",
         element: <Movies />,
