@@ -60,7 +60,7 @@ function TopTrending() {
       <h2 className="border-b border-primary mb-6 pb-2">Trending</h2>
       <div className="flex flex-row flex-wrap">
         {!topTrends ? (
-          <span>Loading ...</span>
+          <Loading isLoading={true} />
         ) : (
           <>
             {topTrends.slice(0, topTrendsNo).map((trendingItem, index) => (
