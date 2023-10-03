@@ -152,9 +152,6 @@ function Navbar() {
           </ul>
         </div>
       </nav>
-      <div className="absolute invisible text-center left-0 bottom-0 -translate-y-1/2 p-4 md:visible">
-        <span>Website design and app by @Tonidev_vn</span>
-      </div>
     </div>
   );
 }

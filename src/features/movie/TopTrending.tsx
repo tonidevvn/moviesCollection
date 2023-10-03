@@ -27,11 +27,11 @@ function TopTrending() {
 
     console.log(
       "🚀 ~ file: TopTrending.tsx:30 ~ useEffect ~ movieData.movies:",
-      movieData.movies
+      movieData.movies_trending
     );
     // check if already fetching api before
-    if (movieData.movies?.length) {
-      setTopTrends(movieData.movies);
+    if (movieData.movies_trending?.length) {
+      setTopTrends(movieData.movies_trending);
     } else {
       // first call and need to fetch api
       fetchData();
@@ -39,7 +39,7 @@ function TopTrending() {
   }, []);
 
   useEffect(() => {
-    setTopTrends(movieData.movies);
+    setTopTrends(movieData.movies_trending);
   }, [movieData]);
 
   const loadingMoreProcessing = () => {
@@ -73,7 +73,7 @@ function TopTrending() {
       <div className="flex justify-center">
         <button
           type="button"
-          className="btn shadow shadow-gray-400 hover:transform duration-300 hover:text-2xl"
+          className="btn mt-4 shadow shadow-gray-400 hover:transform duration-300 hover:text-2xl"
           onClick={() => loadingMoreProcessing()}
         >
           Load more

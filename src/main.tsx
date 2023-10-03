@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import { store } from "./app/store";
 import Search from "./pages/Search/index.tsx";
 import Details from "./pages/Movies/Details.tsx";
+import TVDetails from "./pages/TVShows/Details.tsx";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/movies",
         element: <Movies />,
+      },
+      {
+        path: "/tv/:id",
+        element: <TVDetails />,
       },
       {
         path: "/tv-shows",

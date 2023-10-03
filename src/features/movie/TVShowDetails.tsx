@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
 import moment from "moment";
-import { MovieDetails, MovieVideo } from "./interface";
-import { fetchMovieVideos } from "./movieAPI";
+import { MovieVideo, TVDetails } from "./interface";
+import { fetchTVVideos } from "./movieAPI";
 
-function MovieCardDetails({ cardItem }: { cardItem: MovieDetails }) {
+function TVShowDetails({ cardItem }: { cardItem: TVDetails }) {
   const {
     id,
     backdrop_path,
     poster_path,
-    title,
-    release_date,
-    runtime,
+    name,
+    first_air_date,
     overview,
     tagline,
     genres,
@@ -31,7 +30,7 @@ function MovieCardDetails({ cardItem }: { cardItem: MovieDetails }) {
     async function fetchData() {
       console.log(">>> fetching data ...");
       if (id) {
-        const res = await fetchMovieVideos(id);
+        const res = await fetchTVVideos(id);
         const relatedVideos: MovieVideo[] = res;
         console.log(
           "🚀 ~ file: MovieDetails.tsx:36 ~ fetchData ~ relatedVideos:",
@@ -70,11 +69,11 @@ function MovieCardDetails({ cardItem }: { cardItem: MovieDetails }) {
             </div>
             <div className="w-full flex flex-col p-4 align-middle md:w-2/3">
               <h2>
-                {title} ({moment(release_date).format("yyyy")})
+                {name} ({moment(first_air_date).format("yyyy")})
               </h2>
               <div>
                 <span className="px-3 mr-1 border border-gray-400">R</span>
-                <span>{moment(release_date).format("MM/DD/yyyy")} </span>
+                <span>{moment(first_air_date).format("MM/DD/yyyy")} </span>
                 {" • "}
                 {genres.map((genre, index) => (
                   <span key={index} className="font-medium">
@@ -82,10 +81,6 @@ function MovieCardDetails({ cardItem }: { cardItem: MovieDetails }) {
                     {genre.name}
                   </span>
                 ))}
-                {" • "}
-                <span>
-                  {Math.trunc(runtime / 60)}h{runtime % 60}m
-                </span>
               </div>
               <p className="flex flex-wrap align-middle items-center">
                 <span className="flex text-orange-400 hover:text-orange-500 cursor-pointer">
@@ -210,4 +205,4 @@ function MovieCardDetails({ cardItem }: { cardItem: MovieDetails }) {
   );
 }
 
-export default MovieCardDetails;
+export default TVShowDetails;

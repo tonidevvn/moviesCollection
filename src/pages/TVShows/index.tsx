@@ -1,11 +1,12 @@
 import TopPopular from "../../features/movie/TopPopular";
-import TopTrending from "../../features/movie/TopTrending";
+import TopRated from "../../features/movie/TopRated";
+import { MediaTypes } from "../../features/movie/interface";
 
 function TVShows() {
   return (
     <div>
-      <TopTrending />
-      <TopPopular />
+      <TopRated mediaType={MediaTypes.TVShow} />
+      <TopPopular mediaType={MediaTypes.TVShow} />
     </div>
   );
 }

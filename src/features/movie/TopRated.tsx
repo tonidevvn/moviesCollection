@@ -5,53 +5,48 @@ import MovieCard from "./MovieCard";
 
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import {
-  fetchPopularMoviesAsync,
-  fetchPopularTVShowsAsync,
+  fetchTopRatedMoviesAsync,
+  fetchTopRatedTVShowsAsync,
   movieSelector,
 } from "./movieSlice";
 import TVShowCard from "./TVShowCard";
 
-function TopPopular({ mediaType }: { mediaType: MediaTypes }) {
-  const TOP_POPULAR_NO = 8;
-  const TOP_POPULAR_MAX = 12;
+function TopRated({ mediaType }: { mediaType: MediaTypes }) {
+  const TOP_TREND_NO = 8;
+  const TOP_TREND_MAX = 20;
   const movieData = useAppSelector(movieSelector);
   const dispatch = useAppDispatch();
-  const [topPopulars, setTopPopulars] = useState<MovieItem[] | TVShowItem[]>(
-    []
-  );
-  const [topPopularsNo, setTopPopularsNo] = useState<number>(TOP_POPULAR_NO);
+  const [topRated, setTopRated] = useState<MovieItem[] | TVShowItem[]>([]);
+  const [topRatedNo, setTopRatedNo] = useState<number>(TOP_TREND_NO);
   const [isloading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     async function fetchData() {
       console.log(">>> fetching data ...");
       console.log(
-        "🚀 ~ file: TopTrending.tsx:29 ~ useEffect ~ movieData:",
+        "🚀 ~ file: TopRated.tsx:29 ~ useEffect ~ movieData:",
         movieData
       );
+
       if (mediaType === MediaTypes.Movie) {
-        dispatch(fetchPopularMoviesAsync());
+        dispatch(fetchTopRatedMoviesAsync());
       } else {
-        dispatch(fetchPopularTVShowsAsync());
+        dispatch(fetchTopRatedTVShowsAsync());
       }
     }
 
-    console.log(
-      "🚀 ~ file: TopTrending.tsx:30 ~ useEffect ~ movieData",
-      movieData
-    );
     if (mediaType === MediaTypes.Movie) {
       // check if already fetching api before
-      if (movieData.movies_popular?.length) {
-        setTopPopulars(movieData.movies_popular);
+      if (movieData.movies_toprated?.length) {
+        setTopRated(movieData.movies_toprated);
       } else {
         // first call and need to fetch api
         fetchData();
       }
     } else {
       // check if already fetching api before
-      if (movieData.tvshows_popular?.length) {
-        setTopPopulars(movieData.tvshows_popular);
+      if (movieData.tvshows_toprated?.length) {
+        setTopRated(movieData.tvshows_toprated);
       } else {
         // first call and need to fetch api
         fetchData();
@@ -61,33 +56,41 @@ function TopPopular({ mediaType }: { mediaType: MediaTypes }) {
 
   useEffect(() => {
     if (mediaType === MediaTypes.Movie) {
-      setTopPopulars(movieData.movies_popular);
+      setTopRated(movieData.movies_toprated);
     } else {
-      setTopPopulars(movieData.tvshows_popular);
+      setTopRated(movieData.tvshows_toprated);
     }
   }, [movieData]);
 
   const loadingMoreProcessing = () => {
     setIsLoading(true);
     setTimeout(() => {
-      setTopPopularsNo((prev) =>
-        prev + TOP_POPULAR_NO > TOP_POPULAR_MAX
-          ? TOP_POPULAR_MAX
-          : prev + TOP_POPULAR_NO
+      setTopRatedNo((prev) =>
+        prev + TOP_TREND_NO > TOP_TREND_MAX
+          ? TOP_TREND_MAX
+          : prev + TOP_TREND_NO
       );
+
       setIsLoading(false);
     }, 2000);
   };
 
+  console.log(
+    "🚀 ~ file: TopRated.tsx:30 ~ useEffect ~ movieData.movies_toprated:",
+    movieData
+  );
+
   return (
     <div className="mt-4">
-      <h2 className="border-b border-primary mb-6 pb-2">What's Popular</h2>
+      <h2 className="border-b border-primary mb-6 pb-2">
+        Top Rated {mediaType === MediaTypes.Movie ? "Movies" : "TV Shows"}{" "}
+      </h2>
       <div className="flex flex-row flex-wrap">
-        {!topPopulars ? (
+        {!topRated ? (
           <Loading isLoading={true} />
         ) : (
           <>
-            {topPopulars.slice(0, topPopularsNo).map((item, index) => {
+            {topRated.slice(0, topRatedNo).map((item, index) => {
               return mediaType === MediaTypes.Movie ? (
                 <MovieCard cardItem={item as MovieItem} key={index} />
               ) : (
@@ -111,4 +114,4 @@ function TopPopular({ mediaType }: { mediaType: MediaTypes }) {
   );
 }
 
-export default TopPopular;
+export default TopRated;
