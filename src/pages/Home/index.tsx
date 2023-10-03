@@ -1,3 +1,4 @@
+import BannerBottom from "../../components/Banners";
 import Header from "../../components/Header";
 import TopPopular from "../../features/movie/TopPopular";
 import TopTrending from "../../features/movie/TopTrending";
@@ -9,6 +10,7 @@ function Home() {
       <Header />
       <TopTrending />
       <TopPopular mediaType={MediaTypes.Movie} />
+      <BannerBottom />
     </>
   );
 }
