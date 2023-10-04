@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
-import Loading from "../../components/Loading";
-import { MediaTypes, MovieItem, TVShowItem } from "./interface";
-import MovieCard from "./MovieCard";
-
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import {
   fetchPopularMoviesAsync,
   fetchPopularTVShowsAsync,
   movieSelector,
 } from "./movieSlice";
+import MovieCard from "./MovieCard";
 import TVShowCard from "./TVShowCard";
+import Loading from "../../components/Loading";
+import { MediaTypes } from "./movieAPI";
 
 function TopPopular({ mediaType }: { mediaType: MediaTypes }) {
   const TOP_POPULAR_NO = 8;

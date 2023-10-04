@@ -1,4 +1,4 @@
-export interface MovieItem {
+interface MovieItem {
   adult: boolean;
   backdrop_path: string;
   id: number;
@@ -16,7 +16,7 @@ export interface MovieItem {
   vote_count: number;
 }
 
-export interface TVShowItem {
+interface TVShowItem {
   backdrop_path: string;
   first_air_date: string;
   genre_ids: number[];
@@ -32,7 +32,7 @@ export interface TVShowItem {
   vote_count: number;
 }
 
-export interface MovieDetails {
+interface MovieDetails {
   adult: boolean;
   backdrop_path: string;
   belongs_to_collection: string | null;
@@ -60,7 +60,7 @@ export interface MovieDetails {
   vote_count: number;
 }
 
-export interface TVDetails {
+interface TVDetails {
   adult: boolean;
   backdrop_path: string;
   created_by: CreatedBy[];
@@ -95,7 +95,7 @@ export interface TVDetails {
   vote_count: number;
 }
 
-export interface CreatedBy {
+interface CreatedBy {
   id: number;
   credit_id: string;
   name: string;
@@ -103,12 +103,12 @@ export interface CreatedBy {
   profile_path: string;
 }
 
-export interface Genre {
+interface Genre {
   id: number;
   name: string;
 }
 
-export interface LastEpisodeToAir {
+interface LastEpisodeToAir {
   id: number;
   name: string;
   overview: string;
@@ -124,14 +124,14 @@ export interface LastEpisodeToAir {
   still_path: string;
 }
 
-export interface Network {
+interface Network {
   id: number;
   logo_path: string;
   name: string;
   origin_country: string;
 }
 
-export interface Season {
+interface Season {
   air_date?: string;
   episode_count: number;
   id: number;
@@ -142,7 +142,7 @@ export interface Season {
   vote_average: number;
 }
 
-export interface MovieVideo {
+interface MovieVideo {
   iso_639_1: string;
   iso_3166_1: string;
   name: string;
@@ -155,30 +155,30 @@ export interface MovieVideo {
   id: string;
 }
 
-export interface Genre {
+interface Genre {
   id: number;
   name: string;
 }
 
-export interface ProductionCompany {
+interface ProductionCompany {
   id: number;
   logo_path: string;
   name: string;
   origin_country: string;
 }
 
-export interface ProductionCountry {
+interface ProductionCountry {
   iso_3166_1: string;
   name: string;
 }
 
-export interface SpokenLanguage {
+interface SpokenLanguage {
   english_name: string;
   iso_639_1: string;
   name: string;
 }
 
-export interface MoviesState {
+interface MoviesState {
   movies_trending: MovieItem[];
   movies_popular: MovieItem[];
   movies_toprated: MovieItem[];
@@ -186,15 +186,4 @@ export interface MoviesState {
   tvshows_toprated: TVShowItem[];
   loading: boolean;
   error: string | undefined;
-}
-
-export enum MovieLoadingTypes {
-  Trend = 1,
-  Popular,
-  TopRated,
-}
-
-export enum MediaTypes {
-  Movie = 1,
-  TVShow,
 }

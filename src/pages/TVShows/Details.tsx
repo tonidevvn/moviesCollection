@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchTVShowDetails } from "../../features/movie/movieAPI";
-import { TVDetails } from "../../features/movie/interface";
 import Loading from "../../components/Loading";
 import TVShowDetails from "../../features/movie/TVShowDetails";
 

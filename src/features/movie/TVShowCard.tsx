@@ -1,9 +1,14 @@
 import moment from "moment";
 import { Link } from "react-router-dom";
-import { TVShowItem } from "./interface";
 
-function TVShowCard({ cardItem }: { cardItem: TVShowItem }) {
-  const { id, backdrop_path, name, first_air_date, vote_average } = cardItem;
+interface IProps {
+  cardItem: TVShowItem;
+}
+
+function TVShowCard(props: IProps) {
+  const { id, backdrop_path, name, first_air_date, vote_average } =
+    props.cardItem;
+
   return (
     <div className="w-1/2 md:w-1/4 p-2">
       <div className="relative overflow-hidden rounded-md shadow shadow-gray-400 hover:shadow-md hover:shadow-gray-400">

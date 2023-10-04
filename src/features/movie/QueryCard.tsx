@@ -1,7 +1,9 @@
-import { MovieItem } from "./interface";
+interface IProps {
+  cardItem: MovieItem;
+}
 
-function QueryCard({ cardItem }: { cardItem: MovieItem }) {
-  const { backdrop_path, title, release_date, overview } = cardItem;
+function QueryCard(props: IProps) {
+  const { backdrop_path, title, release_date, overview } = props.cardItem;
   return (
     <div className="flex flex-row w-full my-4 rounded-md border border-gray-300 shadow shadow-gray-300 hover:shadow-md hover:shadow-gray-300">
       <div className="w-26 min-w-fit cursor-pointer rounded-s-md overflow-hidden">

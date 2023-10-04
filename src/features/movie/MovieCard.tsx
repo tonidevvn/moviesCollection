@@ -1,10 +1,13 @@
 import moment from "moment";
 import { Link } from "react-router-dom";
-import { MovieItem } from "./interface";
 
-function MovieCard({ cardItem }: { cardItem: MovieItem }) {
+interface IProps {
+  cardItem: MovieItem;
+}
+
+function MovieCard(props: IProps) {
   const { id, backdrop_path, title, release_date, vote_average, media_type } =
-    cardItem;
+    props.cardItem;
 
   return (
     <>

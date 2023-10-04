@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Loading from "../../components/Loading";
-import { MovieItem } from "./interface";
 import MovieCard from "./MovieCard";
 
 import { useAppSelector, useAppDispatch } from "../../app/hooks";

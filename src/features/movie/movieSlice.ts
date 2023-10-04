@@ -1,12 +1,6 @@
-import { fetchMovies, fetchTVShows } from "./movieAPI";
+import { MovieLoadingTypes, fetchMovies, fetchTVShows } from "./movieAPI";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
-import {
-  MoviesState,
-  MovieLoadingTypes,
-  MovieItem,
-  TVShowItem,
-} from "./interface";
 
 const initialState: MoviesState = {
   loading: false,

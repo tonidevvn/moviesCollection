@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import moment from "moment";
-import { MovieVideo, TVDetails } from "./interface";
 import { fetchTVVideos } from "./movieAPI";
 
-function TVShowDetails({ cardItem }: { cardItem: TVDetails }) {
+interface IProps {
+  cardItem: TVDetails;
+}
+
+function TVShowDetails(props: IProps) {
   const {
     id,
     backdrop_path,
@@ -17,7 +20,7 @@ function TVShowDetails({ cardItem }: { cardItem: TVDetails }) {
     production_countries,
     vote_average,
     production_companies,
-  } = cardItem;
+  } = props.cardItem;
 
   const [officialTrailer, setOfficialTrailer] = useState<MovieVideo>();
   const [showingTrailerYtb, setShowingTrailerYtb] = useState<boolean>();

@@ -1,6 +1,6 @@
 import TopPopular from "../../features/movie/TopPopular";
 import TopRated from "../../features/movie/TopRated";
-import { MediaTypes } from "../../features/movie/interface";
+import { MediaTypes } from "../../features/movie/movieAPI";
 
 function Movies() {
   return (

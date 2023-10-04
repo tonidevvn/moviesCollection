@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
 import Loading from "../../components/Loading";
-import { MovieItem } from "./interface";
 import { fetchMovieQuery } from "./movieAPI";
 import QueryCard from "./QueryCard";
 
-function MovieQueryResult({ query }: { query: string }) {
+interface IProps {
+  query: string;
+}
+
+function MovieQueryResult(props: IProps) {
   const [queryResults, setQueryResults] = useState<MovieItem[]>([]);
   const [isloading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     async function fetchData() {
       console.log(">>> fetching data ...");
-      const res = await fetchMovieQuery(query);
+      const res = await fetchMovieQuery(props.query);
       setQueryResults(res);
 
       setTimeout(() => {
@@ -26,7 +29,7 @@ function MovieQueryResult({ query }: { query: string }) {
   return (
     <div className="mt-4">
       <h2 className="border-b border-primary mb-6 pb-2">
-        Search results for '{query}'
+        Search results for '{props.query}'
       </h2>
       <div className="flex flex-row flex-wrap">
         {isloading ? (

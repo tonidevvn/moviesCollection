@@ -1,7 +1,4 @@
 import { useEffect, useState } from "react";
-import Loading from "../../components/Loading";
-import { MediaTypes, MovieItem, TVShowItem } from "./interface";
-import MovieCard from "./MovieCard";
 
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import {
@@ -9,7 +6,10 @@ import {
   fetchTopRatedTVShowsAsync,
   movieSelector,
 } from "./movieSlice";
+import Loading from "../../components/Loading";
+import MovieCard from "./MovieCard";
 import TVShowCard from "./TVShowCard";
+import { MediaTypes } from "./movieAPI";
 
 function TopRated({ mediaType }: { mediaType: MediaTypes }) {
   const TOP_TREND_NO = 8;

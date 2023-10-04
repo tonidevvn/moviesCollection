@@ -1,5 +1,4 @@
 import axios, { AxiosRequestConfig } from "axios";
-import { MovieLoadingTypes } from "./interface";
 
 const TRENDING_MOVIE_API_URL =
   "https://api.themoviedb.org/3/trending/movie/day?language=en-US";
@@ -22,6 +21,17 @@ const QUERY_MOVIE_API_URL =
 const MOVIE_DETAILS_API_URL = "https://api.themoviedb.org/3/movie/";
 
 const TVSHOW_DETAILS_API_URL = "https://api.themoviedb.org/3/tv/";
+
+export const enum MovieLoadingTypes {
+  Trend = 1,
+  Popular,
+  TopRated,
+}
+
+export const enum MediaTypes {
+  Movie = 1,
+  TVShow,
+}
 
 export const fetchMovies = async (type = MovieLoadingTypes.Trend) => {
   try {

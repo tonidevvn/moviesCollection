@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMovieDetails } from "../../features/movie/movieAPI";
-import { MovieDetails } from "../../features/movie/interface";
 import MovieCardDetails from "../../features/movie/MovieDetails";
 import Loading from "../../components/Loading";
 
